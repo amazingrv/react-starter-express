@@ -1,4 +1,4 @@
-# react-starter-express ![Node CI](https://github.com/amazingrv/react-starter-express/workflows/Node%20CI/badge.svg)
+# react-starter-express ![Node CI](https://github.com/amazingrv/react-starter-express/workflows/Node%20CI/badge.svg?branch=master)
 
 A Simple react starter kit with exposed config and hooks support, runnnig from express server (for Node version 10.13 and above).
 
