@@ -20,8 +20,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(
   webpackDevMiddleware(compiler, {
     index: false,
-    publicPath: config.output.publicPath,
-    logLevel: 'silent',
   })
 );
 

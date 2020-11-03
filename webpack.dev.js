@@ -16,6 +16,7 @@ module.exports = merge(common, {
   output: {
     filename: '[name].js',
   },
+  stats: 'none',
   devtool: 'source-map',
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
