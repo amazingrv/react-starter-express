@@ -53,7 +53,7 @@
     "autoprefixer": "^10.0.1",
     "babel-loader": "^8.1.0",
     "babel-plugin-lodash": "^3.3.4",
-    "caniuse-lite": "^1.0.30001156",
+    "caniuse-lite": "^1.0.30001157",
     "copy-webpack-plugin": "^6.3.0",
     "css-loader": "^5.0.1",
     "css-minimizer-webpack-plugin": "^1.1.5",
