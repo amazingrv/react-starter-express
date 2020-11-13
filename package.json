@@ -51,7 +51,7 @@
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.5",
     "autoprefixer": "^10.0.2",
-    "babel-loader": "^8.1.0",
+    "babel-loader": "^8.2.1",
     "babel-plugin-lodash": "^3.3.4",
     "caniuse-lite": "^1.0.30001157",
     "copy-webpack-plugin": "^6.3.0",
