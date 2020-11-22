@@ -74,7 +74,7 @@
     "moment-locales-webpack-plugin": "^1.2.0",
     "postcss": "^8.1.8",
     "postcss-loader": "^4.1.0",
-    "prettier": "^2.1.2",
+    "prettier": "^2.2.0",
     "raw-loader": "^4.0.2",
     "react-router-dom": "^5.2.0",
     "rimraf": "^3.0.2",
