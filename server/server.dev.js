@@ -23,12 +23,7 @@ app.use(
   })
 );
 
-app.use(
-  webpackHotMiddleware(compiler, {
-    publicPath: config.output.publicPath,
-    log: false,
-  })
-);
+app.use(webpackHotMiddleware(compiler));
 
 app.use('*', (req, res, next) => {
   // eslint-disable-next-line consistent-return
