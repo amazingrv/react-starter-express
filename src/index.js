@@ -12,10 +12,10 @@ import Routes from './Routes';
 const mountNode = document.querySelector('#app');
 
 ReactDOM.render(
-  <Provider store={store}>
-    <Router>
-      <Routes />
-    </Router>
-  </Provider>,
-  mountNode
+    <Provider store={store}>
+        <Router>
+            <Routes />
+        </Router>
+    </Provider>,
+    mountNode
 );

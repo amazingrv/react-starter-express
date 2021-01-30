@@ -6,20 +6,20 @@ import rootReducer from './root.reducer';
 const middleware = [...getDefaultMiddleware()];
 
 if (process.env.NODE_ENV === 'development') {
-  const logger = createLogger({
-    collapsed: true,
-  });
-  middleware.push(logger);
+    const logger = createLogger({
+        collapsed: true,
+    });
+    middleware.push(logger);
 }
 
 const preloadedState = {};
 
 const store = configureStore({
-  reducer: rootReducer,
-  middleware,
-  devTools: process.env.NODE_ENV === 'development',
-  preloadedState,
-  enhancers: [],
+    reducer: rootReducer,
+    middleware,
+    devTools: process.env.NODE_ENV === 'development',
+    preloadedState,
+    enhancers: [],
 });
 
 // The store has been created with these options:

@@ -8,98 +8,98 @@ const ProgressPlugin = require('progress-webpack-plugin');
 const DIST_DIR = path.join(__dirname, 'dist');
 
 module.exports = {
-  output: {
-    path: path.join(DIST_DIR, 'static'),
-    publicPath: '/',
-  },
-  module: {
-    rules: [
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
-        options: {
-          cacheDirectory: true,
-        },
-      },
-      {
-        test: /\.css$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1,
+    output: {
+        path: path.join(DIST_DIR, 'static'),
+        publicPath: '/',
+    },
+    module: {
+        rules: [
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader',
+                options: {
+                    cacheDirectory: true,
+                },
             },
-          },
-          'postcss-loader',
-        ],
-        exclude: /\.module\.css$/,
-      },
-      {
-        test: /\.css$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1,
-              modules: true,
+            {
+                test: /\.css$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            importLoaders: 1,
+                        },
+                    },
+                    'postcss-loader',
+                ],
+                exclude: /\.module\.css$/,
             },
-          },
-          'postcss-loader',
-        ],
-        include: /\.module\.css$/,
-      },
-      {
-        test: /\.(png|svg|jpg|gif)$/i,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              name: 'images/[name].[ext]',
-              limit: 8192,
+            {
+                test: /\.css$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            importLoaders: 1,
+                            modules: true,
+                        },
+                    },
+                    'postcss-loader',
+                ],
+                include: /\.module\.css$/,
             },
-          },
-        ],
-      },
-      {
-        test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: 'fonts/[name].[ext]',
+            {
+                test: /\.(png|svg|jpg|gif)$/i,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            name: 'images/[name].[ext]',
+                            limit: 8192,
+                        },
+                    },
+                ],
             },
-          },
+            {
+                test: /\.(woff|woff2|eot|ttf|otf)$/i,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: 'fonts/[name].[ext]',
+                        },
+                    },
+                ],
+            },
+            {
+                test: /\.(html)$/i,
+                use: 'raw-loader',
+            },
         ],
-      },
-      {
-        test: /\.(html)$/i,
-        use: 'raw-loader',
-      },
+    },
+    resolve: {
+        fallback: { url: false },
+        extensions: ['.js', '.jsx'],
+    },
+    performance: {
+        hints: false,
+    },
+    stats: {
+        colors: true,
+    },
+    plugins: [
+        new ESLintPlugin({ fix: true, extensions: ['js', 'jsx'] }),
+        new HtmlWebpackPlugin({
+            template: './src/index.html',
+            filename: path.join(DIST_DIR, 'index.html'),
+            scriptLoading: 'defer',
+            favicon: './src/assets/favicon.ico',
+            minify: false,
+        }),
+        new MomentLocalesPlugin(),
+        new ProgressPlugin(),
     ],
-  },
-  resolve: {
-    fallback: { url: false },
-    extensions: ['.js', '.jsx'],
-  },
-  performance: {
-    hints: false,
-  },
-  stats: {
-    colors: true,
-  },
-  plugins: [
-    new ESLintPlugin({ fix: true, extensions: ['js', 'jsx'] }),
-    new HtmlWebpackPlugin({
-      template: './src/index.html',
-      filename: path.join(DIST_DIR, 'index.html'),
-      scriptLoading: 'defer',
-      favicon: './src/assets/favicon.ico',
-      minify: false,
-    }),
-    new MomentLocalesPlugin(),
-    new ProgressPlugin(),
-  ],
 };
