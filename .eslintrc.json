@@ -23,10 +23,7 @@
         "plugin:import/errors",
         "plugin:import/warnings",
         "plugin:jsx-a11y/recommended",
-        "plugin:prettier/recommended",
-        "prettier/react",
-        "prettier/standard",
-        "prettier/unicorn"
+        "plugin:prettier/recommended"
     ],
     "globals": {
         "Atomics": "readonly",
