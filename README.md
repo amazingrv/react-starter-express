@@ -6,14 +6,14 @@ Supports routing, ReduxJS, eslint with recommended lint rules, prettier and othe
 
 Currently supported config:
 
--   exposed configuration for eslint, browserlint, babel, postcss etc.
--   browserlist support with postcss for autoprefixer
--   babel-preset-env, Core-JS 3 Polyfills and other most used babel plugins
--   webpack loaders for eslint, font and images etc.
--   support for css 3 and css modules for scoped css
--   friendly erros with formatted webpack output via webpack plugins
--   lodash, momentjs and respective loaders for tree-shaking support
--   all optimizations applied to production build for minimum size with max performance.
+- exposed configuration for eslint, browserlint, babel, postcss etc.
+- browserlist support with postcss for autoprefixer
+- babel-preset-env, Core-JS 3 Polyfills and other most used babel plugins
+- webpack loaders for eslint, font and images etc.
+- support for css 3 and css modules for scoped css
+- friendly erros with formatted webpack output via webpack plugins
+- lodash, momentjs and respective loaders for tree-shaking support
+- all optimizations applied to production build for minimum size with max performance.
 
 ## Building and running on localhost
 

@@ -18,28 +18,28 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use(
-    webpackDevMiddleware(compiler, {
-        index: false,
-    })
+  webpackDevMiddleware(compiler, {
+    index: false,
+  })
 );
 
 app.use(webpackHotMiddleware(compiler));
 
 app.use('*', (req, res, next) => {
-    // eslint-disable-next-line consistent-return
-    compiler.outputFileSystem.readFile(HTML_FILE, (err, buffer) => {
-        if (err) {
-            return next(err);
-        }
+  // eslint-disable-next-line consistent-return
+  compiler.outputFileSystem.readFile(HTML_FILE, (err, buffer) => {
+    if (err) {
+      return next(err);
+    }
 
-        const htmlString = ejs.render(buffer.toString('utf8'), properties);
-        res.set('content-type', 'text/html');
-        res.send(htmlString);
-        res.end();
-    });
+    const htmlString = ejs.render(buffer.toString('utf8'), properties);
+    res.set('content-type', 'text/html');
+    res.send(htmlString);
+    res.end();
+  });
 });
 
 server.listen(port, () => {
-    console.log(`App listening to ${port}....`);
-    console.log('Press Ctrl+C to quit.');
+  console.log(`App listening to ${port}....`);
+  console.log('Press Ctrl+C to quit.');
 });

@@ -5,26 +5,26 @@ const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const common = require('./webpack.common');
 
 module.exports = merge(common, {
-    mode: 'development',
-    entry: {
-        main: [
-            'eventsource-polyfill',
-            'webpack-hot-middleware/client?reload=true&overlay=false&quiet=true',
-            './src/index.js',
-        ],
-    },
-    output: {
-        filename: '[name].js',
-    },
-    stats: 'none',
-    infrastructureLogging: {
-        level: 'none',
-    },
-    devtool: 'source-map',
-    plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoEmitOnErrorsPlugin(),
-        new FriendlyErrorsWebpackPlugin(),
-        new MiniCssExtractPlugin({ filename: '[name].css' }),
+  mode: 'development',
+  entry: {
+    main: [
+      'eventsource-polyfill',
+      'webpack-hot-middleware/client?reload=true&quiet=true',
+      './src/index.js',
     ],
+  },
+  output: {
+    filename: '[name].js',
+  },
+  stats: 'none',
+  infrastructureLogging: {
+    level: 'none',
+  },
+  devtool: 'source-map',
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
+    new FriendlyErrorsWebpackPlugin(),
+    new MiniCssExtractPlugin({ filename: '[name].css' }),
+  ],
 });
