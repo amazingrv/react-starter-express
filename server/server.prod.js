@@ -17,19 +17,14 @@ app.use(compression());
 app.use(express.static(path.join(DIST_DIR, 'static')));
 
 app.get('*', (req, res, next) => {
-  ejs.renderFile(
-    HTML_FILE,
-    properties,
-    // eslint-disable-next-line consistent-return
-    (err, htmlString) => {
-      if (err) {
-        return next(err);
-      }
-      res.set('content-type', 'text/html');
-      res.send(htmlString);
-      res.end();
+  ejs.renderFile(HTML_FILE, properties, (err, htmlString) => {
+    if (err) {
+      return next(err);
     }
-  );
+    res.set('content-type', 'text/html');
+    res.send(htmlString);
+    res.end();
+  });
 });
 
 server.listen(port, () => {

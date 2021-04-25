@@ -26,7 +26,6 @@ app.use(
 app.use(webpackHotMiddleware(compiler));
 
 app.use('*', (req, res, next) => {
-  // eslint-disable-next-line consistent-return
   compiler.outputFileSystem.readFile(HTML_FILE, (err, buffer) => {
     if (err) {
       return next(err);

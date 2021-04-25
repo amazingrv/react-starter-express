@@ -16,33 +16,9 @@
     "requireConfigFile": false,
     "sourceType": "module"
   },
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:react-hooks/recommended",
-    "plugin:import/errors",
-    "plugin:import/warnings",
-    "plugin:jsx-a11y/recommended",
-    "plugin:prettier/recommended"
-  ],
+  "extends": ["airbnb", "airbnb/hooks", "plugin:prettier/recommended"],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
-  },
-  "settings": {
-    "import/resolver": {
-      "node": {
-        "extensions": [".js", ".jsx", ".json"]
-      }
-    },
-    "react": {
-      "pragma": "React",
-      "version": "detect"
-    },
-    "propWrapperFunctions": [
-      "forbidExtraProps",
-      { "property": "freeze", "object": "Object" }
-    ],
-    "linkComponents": [{ "name": "Link", "linkAttribute": "to" }]
   }
 }

@@ -66,17 +66,15 @@ function DataTable({ data, columns, idKey }) {
   };
 
   const genRowData = () => {
-    const elements = [];
-    for (const item of items) {
+    return items.map((item) => {
       const rowData = [];
-      for (let i = 0; i < columns.length; i++) {
+      for (let i = 0; i < columns.length; i += 1) {
         rowData.push(
           <td key={`${item[idKey]}-${i}`}>{item[columns[i].key]}</td>
         );
       }
-      elements.push(<tr key={item[idKey]}>{rowData}</tr>);
-    }
-    return elements;
+      return <tr key={item[idKey]}>{rowData}</tr>;
+    });
   };
 
   const genPaginationRows = () => {
@@ -118,8 +116,12 @@ function DataTable({ data, columns, idKey }) {
     }
 
     if (current > 0) {
-      for (let i = current - 1, j = 1; i >= first && j <= countLeft; i--, j++) {
-        const element = (
+      for (
+        let i = current - 1, j = 1;
+        i >= first && j <= countLeft;
+        i -= 1, j += 1
+      ) {
+        const leftButtons = (
           <li key={i} className="page-item">
             <button
               type="button"
@@ -130,9 +132,9 @@ function DataTable({ data, columns, idKey }) {
             </button>
           </li>
         );
-        left.splice(0, 0, element);
+        left.splice(0, 0, leftButtons);
       }
-      const element = (
+      const centerButton = (
         <li key={current} className="page-item active">
           <button
             type="button"
@@ -143,9 +145,13 @@ function DataTable({ data, columns, idKey }) {
           </button>
         </li>
       );
-      center.push(element);
-      for (let i = current + 1, j = 1; i <= last && j <= countRight; i++, j++) {
-        const element = (
+      center.push(centerButton);
+      for (
+        let i = current + 1, j = 1;
+        i <= last && j <= countRight;
+        i += 1, j += 1
+      ) {
+        const rightButtons = (
           <li key={i} className="page-item">
             <button
               type="button"
@@ -156,7 +162,7 @@ function DataTable({ data, columns, idKey }) {
             </button>
           </li>
         );
-        right.push(element);
+        right.push(rightButtons);
       }
     }
 

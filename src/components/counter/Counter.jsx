@@ -3,6 +3,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinusCircle, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import {
+  Button,
+  Input,
+  InputGroup,
+  InputGroupAddon,
+  Spinner,
+} from 'reactstrap';
+import {
   decrement,
   increment,
   incrementByAmount,
@@ -10,13 +17,6 @@ import {
   selectCount,
   selectLoading,
 } from '../../redux/slices/counter.slice';
-import {
-  Button,
-  Input,
-  InputGroup,
-  InputGroupAddon,
-  Spinner,
-} from 'reactstrap';
 
 const Counter = () => {
   const count = useSelector(selectCount);

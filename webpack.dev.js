@@ -9,7 +9,7 @@ module.exports = merge(common, {
   entry: {
     main: [
       'eventsource-polyfill',
-      'webpack-hot-middleware/client?reload=true&quiet=true',
+      'webpack-hot-middleware/client?reload=true',
       './src/index.js',
     ],
   },
@@ -17,9 +17,6 @@ module.exports = merge(common, {
     filename: 'js/[name].js',
   },
   stats: 'none',
-  infrastructureLogging: {
-    level: 'none',
-  },
   devtool: 'source-map',
   plugins: [
     new webpack.HotModuleReplacementPlugin(),

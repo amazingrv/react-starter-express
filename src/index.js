@@ -5,8 +5,8 @@ import 'regenerator-runtime/runtime';
 
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { BrowserRouter as Router } from 'react-router-dom';
 import store from './redux/store';
-import { HashRouter as Router } from 'react-router-dom';
 import Routes from './Routes';
 
 const mountNode = document.querySelector('#app');
@@ -19,3 +19,7 @@ ReactDOM.render(
   </Provider>,
   mountNode
 );
+
+if (module.hot) {
+  module.hot.accept();
+}
