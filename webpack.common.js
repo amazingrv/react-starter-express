@@ -1,9 +1,9 @@
 const path = require('path');
+const webpack = require('webpack');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
-const ProgressPlugin = require('progress-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
 //   .BundleAnalyzerPlugin;
@@ -53,8 +53,11 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|jpg|gif)$/i,
+        test: /\.(png|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
+        generator: {
+          filename: 'images/[name][ext]',
+        },
       },
       {
         test: /\.(svg)$/i,
@@ -63,6 +66,9 @@ module.exports = {
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
+        generator: {
+          filename: 'fonts/[name][ext]',
+        },
       },
       {
         test: /\.(html)$/i,
@@ -71,11 +77,11 @@ module.exports = {
     ],
   },
   resolve: {
-    fallback: { url: false },
     alias: {
       'lodash-es': 'lodash',
     },
     extensions: ['.js', '.jsx', '.json'],
+    fallback: { url: false },
   },
   performance: {
     hints: false,
@@ -84,7 +90,7 @@ module.exports = {
     colors: true,
   },
   plugins: [
-    new ESLintPlugin({ fix: true, extensions: ['js', 'jsx'], quiet: true }),
+    new ESLintPlugin({ extensions: ['js', 'jsx'], fix: true, quiet: true }),
     new HtmlWebpackPlugin({
       template: './src/index.html',
       filename: path.join(DIST_DIR, 'index.html'),
@@ -94,7 +100,7 @@ module.exports = {
     }),
     new MomentLocalesPlugin(),
     new LodashModuleReplacementPlugin(),
-    new ProgressPlugin(),
+    new webpack.ProgressPlugin(),
     // new BundleAnalyzerPlugin(),
   ],
 };

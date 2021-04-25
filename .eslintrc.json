@@ -1,48 +1,48 @@
 {
-    "parser": "@babel/eslint-parser",
-    "rules": {
-        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-        "react/prop-types": "off",
-        "no-unused-vars": "warn",
-        "react/jsx-uses-react": "off",
-        "react/react-in-jsx-scope": "off"
+  "parser": "@babel/eslint-parser",
+  "rules": {
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/prop-types": "off",
+    "no-unused-vars": "warn",
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off"
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true
+  },
+  "parserOptions": {
+    "requireConfigFile": false,
+    "sourceType": "module"
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:jsx-a11y/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".json"]
+      }
     },
-    "env": {
-        "es6": true,
-        "browser": true,
-        "node": true
+    "react": {
+      "pragma": "React",
+      "version": "detect"
     },
-    "parserOptions": {
-        "requireConfigFile": false,
-        "sourceType": "module"
-    },
-    "extends": [
-        "eslint:recommended",
-        "plugin:react/recommended",
-        "plugin:react-hooks/recommended",
-        "plugin:import/errors",
-        "plugin:import/warnings",
-        "plugin:jsx-a11y/recommended",
-        "plugin:prettier/recommended"
+    "propWrapperFunctions": [
+      "forbidExtraProps",
+      { "property": "freeze", "object": "Object" }
     ],
-    "globals": {
-        "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
-    },
-    "settings": {
-        "import/resolver": {
-            "node": {
-                "extensions": [".js", ".jsx", ".json"]
-            }
-        },
-        "react": {
-            "pragma": "React",
-            "version": "detect"
-        },
-        "propWrapperFunctions": [
-            "forbidExtraProps",
-            { "property": "freeze", "object": "Object" }
-        ],
-        "linkComponents": [{ "name": "Link", "linkAttribute": "to" }]
-    }
+    "linkComponents": [{ "name": "Link", "linkAttribute": "to" }]
+  }
 }

@@ -14,7 +14,7 @@ module.exports = merge(common, {
     ],
   },
   output: {
-    filename: '[name].js',
+    filename: 'js/[name].js',
   },
   stats: 'none',
   infrastructureLogging: {
@@ -25,6 +25,9 @@ module.exports = merge(common, {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new FriendlyErrorsWebpackPlugin(),
-    new MiniCssExtractPlugin({ filename: '[name].css' }),
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].css',
+      chunkFilename: '[id].css',
+    }),
   ],
 });

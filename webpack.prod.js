@@ -13,10 +13,11 @@ module.exports = merge(common, {
   mode: 'production',
   entry: ['./src/index.js'],
   output: {
-    filename: '[name].[contenthash].js',
+    filename: 'js/[name].[contenthash].js',
   },
   devtool: false,
   optimization: {
+    runtimeChunk: 'single',
     splitChunks: {
       cacheGroups: {
         commons: {
@@ -27,15 +28,10 @@ module.exports = merge(common, {
       },
     },
     minimizer: [
-      new TerserPlugin({ exclude: /\/server/ }),
+      new TerserPlugin({ exclude: /\/server/, extractComments: false }),
       new CssMinimizerPlugin({
         minimizerOptions: {
-          preset: [
-            'default',
-            {
-              discardComments: { removeAll: true },
-            },
-          ],
+          preset: 'default',
         },
       }),
     ],
@@ -52,6 +48,9 @@ module.exports = merge(common, {
         },
       ],
     }),
-    new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].[contenthash].css',
+      chunkFilename: '[id].[contenthash].css',
+    }),
   ],
 });
