@@ -71,8 +71,8 @@ module.exports = {
         },
       },
       {
-        test: /\.(html)$/i,
-        type: 'asset/source',
+        test: /\.html$/,
+        loader: 'html-loader',
       },
     ],
   },
@@ -96,7 +96,6 @@ module.exports = {
       filename: path.join(DIST_DIR, 'index.html'),
       scriptLoading: 'defer',
       favicon: './src/assets/favicon.ico',
-      minify: false,
     }),
     new MomentLocalesPlugin(),
     new LodashModuleReplacementPlugin(),
