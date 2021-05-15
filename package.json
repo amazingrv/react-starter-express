@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.13.16",
-    "@babel/eslint-parser": "^7.13.10",
+    "@babel/eslint-parser": "^7.14.2",
     "@babel/plugin-proposal-class-properties": "^7.13.0",
     "@babel/plugin-proposal-export-default-from": "^7.12.13",
     "@babel/plugin-proposal-object-rest-spread": "^7.13.8",
@@ -78,7 +78,7 @@
     "postcss-loader": "^5.2.0",
     "prettier": "^2.3.0",
     "rimraf": "^3.0.2",
-    "sass": "^1.32.12",
+    "sass": "^1.32.13",
     "sass-loader": "^11.1.0",
     "terser-webpack-plugin": "^5.1.2",
     "webpack": "^5.37.0",
