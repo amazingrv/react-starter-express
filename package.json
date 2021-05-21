@@ -61,7 +61,7 @@
     "eslint": "^7.26.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.2.0",
-    "eslint-plugin-import": "^2.23.1",
+    "eslint-plugin-import": "^2.23.2",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.23.2",
@@ -84,7 +84,7 @@
     "webpack": "^5.37.0",
     "webpack-bundle-analyzer": "^4.4.1",
     "webpack-cli": "^4.7.0",
-    "webpack-dev-middleware": "^4.2.0",
+    "webpack-dev-middleware": "^4.3.0",
     "webpack-hot-middleware": "^2.25.0",
     "webpack-merge": "^5.7.3"
   }
