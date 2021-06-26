@@ -79,7 +79,7 @@
     "prettier": "^2.3.0",
     "rimraf": "^3.0.2",
     "sass": "^1.35.1",
-    "sass-loader": "^11.1.1",
+    "sass-loader": "^12.1.0",
     "terser-webpack-plugin": "^5.1.4",
     "webpack": "^5.40.0",
     "webpack-bundle-analyzer": "^4.4.2",
