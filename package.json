@@ -70,7 +70,7 @@
     "eventsource-polyfill": "^0.9.6",
     "friendly-errors-webpack-plugin": "^1.7.0",
     "html-loader": "^2.1.2",
-    "html-webpack-plugin": "^5.3.1",
+    "html-webpack-plugin": "^5.3.2",
     "lodash-webpack-plugin": "^0.11.6",
     "mini-css-extract-plugin": "^1.6.0",
     "moment-locales-webpack-plugin": "^1.2.0",
