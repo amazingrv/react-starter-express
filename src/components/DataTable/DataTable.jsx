@@ -69,9 +69,7 @@ function DataTable({ data, columns, idKey }) {
     return items.map((item) => {
       const rowData = [];
       for (let i = 0; i < columns.length; i += 1) {
-        rowData.push(
-          <td key={`${item[idKey]}-${i}`}>{item[columns[i].key]}</td>
-        );
+        rowData.push(<td key={`${item[idKey]}-${i}`}>{item[columns[i].key]}</td>);
       }
       return <tr key={item[idKey]}>{rowData}</tr>;
     });
@@ -116,18 +114,10 @@ function DataTable({ data, columns, idKey }) {
     }
 
     if (current > 0) {
-      for (
-        let i = current - 1, j = 1;
-        i >= first && j <= countLeft;
-        i -= 1, j += 1
-      ) {
+      for (let i = current - 1, j = 1; i >= first && j <= countLeft; i -= 1, j += 1) {
         const leftButtons = (
           <li key={i} className="page-item">
-            <button
-              type="button"
-              className="page-link"
-              onClick={() => onClickNumber(i)}
-            >
+            <button type="button" className="page-link" onClick={() => onClickNumber(i)}>
               {i}
             </button>
           </li>
@@ -136,28 +126,16 @@ function DataTable({ data, columns, idKey }) {
       }
       const centerButton = (
         <li key={current} className="page-item active">
-          <button
-            type="button"
-            className="page-link"
-            onClick={() => onClickNumber(current)}
-          >
+          <button type="button" className="page-link" onClick={() => onClickNumber(current)}>
             {current}
           </button>
         </li>
       );
       center.push(centerButton);
-      for (
-        let i = current + 1, j = 1;
-        i <= last && j <= countRight;
-        i += 1, j += 1
-      ) {
+      for (let i = current + 1, j = 1; i <= last && j <= countRight; i += 1, j += 1) {
         const rightButtons = (
           <li key={i} className="page-item">
-            <button
-              type="button"
-              className="page-link"
-              onClick={() => onClickNumber(i)}
-            >
+            <button type="button" className="page-link" onClick={() => onClickNumber(i)}>
               {i}
             </button>
           </li>
@@ -185,12 +163,7 @@ function DataTable({ data, columns, idKey }) {
       </div>
       <div className="d-flex mt-2">
         <div className="d-flex">
-          <Input
-            type="select"
-            name="pageSize"
-            onChange={onSelect}
-            value={pageSize}
-          >
+          <Input type="select" name="pageSize" onChange={onSelect} value={pageSize}>
             {pageSizeOptions.map((i) => (
               <option key={i} value={i}>
                 {i}
@@ -201,9 +174,7 @@ function DataTable({ data, columns, idKey }) {
         <div className="d-flex ml-auto">
           <nav aria-label="Page navigation example">
             <ul className="pagination justify-content-end">
-              <li
-                className={`page-item ${current === first ? 'disabled' : ''}`}
-              >
+              <li className={`page-item ${current === first ? 'disabled' : ''}`}>
                 <button
                   type="button"
                   className="page-link"
@@ -213,9 +184,7 @@ function DataTable({ data, columns, idKey }) {
                   <FontAwesomeIcon icon={faAngleDoubleLeft} />
                 </button>
               </li>
-              <li
-                className={`page-item ${current === first ? 'disabled' : ''}`}
-              >
+              <li className={`page-item ${current === first ? 'disabled' : ''}`}>
                 <button
                   type="button"
                   className="page-link"

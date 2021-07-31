@@ -40,31 +40,19 @@ const Routes = ({ location }) => {
   return (
     <div>
       <Navbar className="container mb-2" color="light" light expand="md">
-        <Link
-          className="navbar-brand"
-          replace={location.pathname === '/'}
-          to="/"
-        >
+        <Link className="navbar-brand" replace={location.pathname === '/'} to="/">
           ReactJS
         </Link>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <Link
-                className="nav-link"
-                replace={location.pathname === '/'}
-                to="/"
-              >
+              <Link className="nav-link" replace={location.pathname === '/'} to="/">
                 Home
               </Link>
             </NavItem>
             <NavItem>
-              <Link
-                className="nav-link"
-                replace={location.pathname === '/table'}
-                to="/table"
-              >
+              <Link className="nav-link" replace={location.pathname === '/table'} to="/table">
                 DataTable
               </Link>
             </NavItem>

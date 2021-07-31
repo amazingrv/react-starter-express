@@ -1,7 +1,6 @@
 const webpack = require('webpack');
 const { merge } = require('webpack-merge');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+
 const common = require('./webpack.common');
 
 module.exports = merge(common, {
@@ -16,15 +15,10 @@ module.exports = merge(common, {
   output: {
     filename: 'js/[name].js',
   },
-  stats: 'none',
+  stats: 'minimal',
   devtool: 'source-map',
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
-    new FriendlyErrorsWebpackPlugin(),
-    new MiniCssExtractPlugin({
-      filename: 'css/[name].css',
-      chunkFilename: '[id].css',
-    }),
   ],
 });

@@ -5,9 +5,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
-//   .BundleAnalyzerPlugin;
 
+const devMode = process.env.NODE_ENV !== 'production';
 const DIST_DIR = path.join(__dirname, 'dist');
 
 module.exports = {
@@ -26,28 +25,10 @@ module.exports = {
         },
       },
       {
-        test: /\.css$/,
+        test: /\.(sa|sc|c)ss$/,
         use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1,
-            },
-          },
-          'postcss-loader',
-        ],
-      },
-      {
-        test: /\.s[ac]ss$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 2,
-            },
-          },
+          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader',
           'postcss-loader',
           'sass-loader',
         ],
@@ -81,7 +62,7 @@ module.exports = {
       'lodash-es': 'lodash',
     },
     extensions: ['.js', '.jsx', '.json'],
-    fallback: { url: false },
+    fallback: { fs: false },
   },
   performance: {
     hints: false,
@@ -94,12 +75,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
       filename: path.join(DIST_DIR, 'index.html'),
-      scriptLoading: 'defer',
       favicon: './src/assets/favicon.ico',
     }),
     new MomentLocalesPlugin(),
     new LodashModuleReplacementPlugin(),
     new webpack.ProgressPlugin(),
-    // new BundleAnalyzerPlugin(),
   ],
 };

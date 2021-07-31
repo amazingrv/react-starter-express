@@ -4,6 +4,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+
 const common = require('./webpack.common');
 
 const DIST_DIR = path.join(__dirname, 'dist');
@@ -28,7 +29,7 @@ module.exports = merge(common, {
       },
     },
     minimizer: [
-      new TerserPlugin({ exclude: /\/server/, extractComments: false }),
+      new TerserPlugin({ exclude: /\/server/ }),
       new CssMinimizerPlugin({
         minimizerOptions: {
           preset: 'default',
@@ -50,7 +51,6 @@ module.exports = merge(common, {
     }),
     new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash].css',
-      chunkFilename: '[id].[contenthash].css',
     }),
   ],
 });

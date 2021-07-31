@@ -2,13 +2,7 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinusCircle, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
-import {
-  Button,
-  Input,
-  InputGroup,
-  InputGroupAddon,
-  Spinner,
-} from 'reactstrap';
+import { Button, Input, InputGroup, InputGroupAddon, Spinner } from 'reactstrap';
 import {
   decrement,
   increment,
@@ -27,21 +21,13 @@ const Counter = () => {
   return (
     <div>
       <div className="form-inline justify-content-center">
-        <Button
-          color="success"
-          size="small"
-          onClick={() => dispatch(increment())}
-        >
+        <Button color="success" size="small" onClick={() => dispatch(increment())}>
           <FontAwesomeIcon icon={faPlusCircle} />
         </Button>
         <div>
           <h2 style={{ minWidth: '120px' }}>{count}</h2>
         </div>
-        <Button
-          color="danger"
-          size="small"
-          onClick={() => dispatch(decrement())}
-        >
+        <Button color="danger" size="small" onClick={() => dispatch(decrement())}>
           <FontAwesomeIcon icon={faMinusCircle} />
         </Button>
       </div>
@@ -55,9 +41,7 @@ const Counter = () => {
           <InputGroupAddon addonType="append">
             <Button
               color="primary"
-              onClick={() =>
-                dispatch(incrementByAmount(Number(incrementAmount) || 0))
-              }
+              onClick={() => dispatch(incrementByAmount(Number(incrementAmount) || 0))}
             >
               Add
             </Button>
@@ -65,9 +49,7 @@ const Counter = () => {
           <InputGroupAddon addonType="append">
             <Button
               color="primary"
-              onClick={() =>
-                dispatch(incrementAsync(Number(incrementAmount) || 0))
-              }
+              onClick={() => dispatch(incrementAsync(Number(incrementAmount) || 0))}
             >
               Add Async {loading && <Spinner size="sm" color="light" />}
             </Button>

@@ -16,9 +16,7 @@ export default function App() {
       <img src={logo} className="logo title" alt="logo" />
       <Jumbotron fluid>
         <h1 className="display-3">Hello, React!</h1>
-        <p className="lead">
-          Simple project setup for ReactJS with ReduxJS integration
-        </p>
+        <p className="lead">Simple project setup for ReactJS with ReduxJS integration</p>
         <hr className="my-2" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
