@@ -4,7 +4,7 @@
       "@babel/preset-env",
       {
         "useBuiltIns": "entry",
-        "corejs": "3.16",
+        "corejs": "3.18",
         "bugfixes": true
       }
     ],
@@ -15,9 +15,5 @@
       }
     ]
   ],
-  "plugins": [
-    "@babel/plugin-proposal-export-default-from",
-    "react-html-attrs",
-    "lodash"
-  ]
+  "plugins": ["@babel/plugin-proposal-export-default-from", "react-html-attrs", "lodash"]
 }
