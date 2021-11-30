@@ -25,7 +25,7 @@ const Counter = () => {
           <FontAwesomeIcon icon={faPlusCircle} />
         </Button>
         <div>
-          <h2 style={{ minWidth: '120px' }}>{count}</h2>
+          <h2 style={{ minWidth: '120px', textAlign: 'center' }}>{count}</h2>
         </div>
         <Button color="danger" size="small" onClick={() => dispatch(decrement())}>
           <FontAwesomeIcon icon={faMinusCircle} />
