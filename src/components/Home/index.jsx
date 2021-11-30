@@ -1,8 +1,7 @@
-import './Home.scss';
+import './styles.scss';
 
 import { Jumbotron } from 'reactstrap';
 import logo from '../../assets/logo.svg';
-import Counter from '../counter/Counter';
 
 export default function App() {
   const linkContent = [
@@ -35,9 +34,6 @@ export default function App() {
             </a>
           ))}
         </p>
-        <div className="lead">
-          <Counter />
-        </div>
       </Jumbotron>
     </div>
   );

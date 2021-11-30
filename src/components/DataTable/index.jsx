@@ -1,5 +1,6 @@
 import { memo, useEffect, useState } from 'react';
 import { Input } from 'reactstrap';
+import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faAngleLeft,
@@ -8,13 +9,27 @@ import {
   faAngleDoubleRight,
 } from '@fortawesome/free-solid-svg-icons';
 
-function DataTable({ data, columns, idKey }) {
+import { columns, idKey } from './constants';
+
+const DataTable = () => {
+  const [data, setData] = useState([]);
   const pageSizeOptions = [5, 10, 25, 50];
   const [pageSize, setPageSize] = useState(pageSizeOptions[0]);
   const [items, setItems] = useState([]);
   const [first, setFirst] = useState(0);
   const [current, setCurrent] = useState(0);
   const [last, setLast] = useState(0);
+
+  useEffect(() => {
+    axios
+      .get('https://jsonplaceholder.typicode.com/comments')
+      .then((res) => {
+        setData(res.data.slice(0, 50));
+      })
+      .catch(() => {
+        setData([]);
+      });
+  }, []);
 
   useEffect(() => {
     if (data.length > 0) {
@@ -221,6 +236,6 @@ function DataTable({ data, columns, idKey }) {
       </div>
     </div>
   );
-}
+};
 
 export default memo(DataTable);
