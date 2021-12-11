@@ -79,7 +79,7 @@ module.exports = {
     colors: true,
   },
   plugins: [
-    new ESLintPlugin({ extensions: ['js', 'jsx'], fix: true, quiet: true }),
+    new ESLintPlugin({ extensions: ['js', 'jsx'], fix: true, quiet: true, threads: true }),
     new HtmlWebpackPlugin({
       template: './src/index.html',
       filename: path.join(DIST_DIR, 'index.html'),
