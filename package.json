@@ -50,7 +50,7 @@
     "@babel/plugin-proposal-export-default-from": "^7.16.0",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.0",
-    "@commitlint/cli": "^15.0.0",
+    "@commitlint/cli": "^16.1.0",
     "@commitlint/config-conventional": "^15.0.0",
     "@commitlint/cz-commitlint": "^15.0.0",
     "autoprefixer": "^10.4.0",
