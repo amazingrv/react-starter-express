@@ -52,7 +52,7 @@
     "@babel/preset-react": "^7.16.0",
     "@commitlint/cli": "^15.0.0",
     "@commitlint/config-conventional": "^15.0.0",
-    "@commitlint/cz-commitlint": "^15.0.0",
+    "@commitlint/cz-commitlint": "^16.1.0",
     "autoprefixer": "^10.4.0",
     "babel-loader": "^8.2.2",
     "babel-plugin-lodash": "^3.3.4",
