@@ -6,7 +6,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
-const devMode = process.env.NODE_ENV !== 'production';
 const DIST_DIR = path.join(__dirname, 'dist');
 
 module.exports = {
@@ -25,20 +24,16 @@ module.exports = {
         },
       },
       {
-        test: /\.(sa|sc|c)ss$/,
+        test: /\.css$/,
         use: [
-          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
-              importLoaders: 2,
-              // 0 => no loaders (default);
-              // 1 => postcss-loader;
-              // 2 => postcss-loader, sass-loader
+              importLoaders: 1,
             },
           },
           'postcss-loader',
-          'sass-loader',
         ],
       },
       {
@@ -75,11 +70,8 @@ module.exports = {
   performance: {
     hints: false,
   },
-  stats: {
-    colors: true,
-  },
   plugins: [
-    new ESLintPlugin({ extensions: ['js', 'jsx'], fix: true, quiet: true, threads: true }),
+    new ESLintPlugin({ extensions: ['js', 'jsx'], fix: true, threads: true }),
     new HtmlWebpackPlugin({
       template: './src/index.html',
       filename: path.join(DIST_DIR, 'index.html'),

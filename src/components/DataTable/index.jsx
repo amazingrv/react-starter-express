@@ -23,7 +23,7 @@ const DataTable = () => {
   useEffect(() => {
     axios
       .get('https://jsonplaceholder.typicode.com/comments')
-      .then((res) => {
+      .then(res => {
         setData(res.data.slice(0, 50));
       })
       .catch(() => {
@@ -52,7 +52,7 @@ const DataTable = () => {
     }
   }, [data, pageSize, current]);
 
-  const onSelect = (event) => {
+  const onSelect = event => {
     setPageSize(event.target.value);
   };
 
@@ -76,15 +76,17 @@ const DataTable = () => {
     setCurrent(last);
   };
 
-  const onClickNumber = (number) => {
+  const onClickNumber = number => {
     setCurrent(number);
   };
 
   const genRowData = () => {
-    return items.map((item) => {
+    return items.map(item => {
       const rowData = [];
       for (let i = 0; i < columns.length; i += 1) {
-        rowData.push(<td key={`${item[idKey]}-${i}`}>{item[columns[i].key]}</td>);
+        rowData.push(
+          <td key={`${item[idKey]}-${i}`}>{item[columns[i].key]}</td>
+        );
       }
       return <tr key={item[idKey]}>{rowData}</tr>;
     });
@@ -129,10 +131,18 @@ const DataTable = () => {
     }
 
     if (current > 0) {
-      for (let i = current - 1, j = 1; i >= first && j <= countLeft; i -= 1, j += 1) {
+      for (
+        let i = current - 1, j = 1;
+        i >= first && j <= countLeft;
+        i -= 1, j += 1
+      ) {
         const leftButtons = (
           <li key={i} className="page-item">
-            <button type="button" className="page-link" onClick={() => onClickNumber(i)}>
+            <button
+              type="button"
+              className="page-link"
+              onClick={() => onClickNumber(i)}
+            >
               {i}
             </button>
           </li>
@@ -141,16 +151,28 @@ const DataTable = () => {
       }
       const centerButton = (
         <li key={current} className="page-item active">
-          <button type="button" className="page-link" onClick={() => onClickNumber(current)}>
+          <button
+            type="button"
+            className="page-link"
+            onClick={() => onClickNumber(current)}
+          >
             {current}
           </button>
         </li>
       );
       center.push(centerButton);
-      for (let i = current + 1, j = 1; i <= last && j <= countRight; i += 1, j += 1) {
+      for (
+        let i = current + 1, j = 1;
+        i <= last && j <= countRight;
+        i += 1, j += 1
+      ) {
         const rightButtons = (
           <li key={i} className="page-item">
-            <button type="button" className="page-link" onClick={() => onClickNumber(i)}>
+            <button
+              type="button"
+              className="page-link"
+              onClick={() => onClickNumber(i)}
+            >
               {i}
             </button>
           </li>
@@ -168,7 +190,7 @@ const DataTable = () => {
         <table className="table table-bordered table-hover">
           <thead className="thead-dark">
             <tr>
-              {columns.map((i) => (
+              {columns.map(i => (
                 <th key={i.header}>{i.header}</th>
               ))}
             </tr>
@@ -178,8 +200,13 @@ const DataTable = () => {
       </div>
       <div className="d-flex mt-2">
         <div className="d-flex">
-          <Input type="select" name="pageSize" onChange={onSelect} value={pageSize}>
-            {pageSizeOptions.map((i) => (
+          <Input
+            type="select"
+            name="pageSize"
+            onChange={onSelect}
+            value={pageSize}
+          >
+            {pageSizeOptions.map(i => (
               <option key={i} value={i}>
                 {i}
               </option>
@@ -189,7 +216,9 @@ const DataTable = () => {
         <div className="d-flex ml-auto">
           <nav aria-label="Page navigation example">
             <ul className="pagination justify-content-end">
-              <li className={`page-item ${current === first ? 'disabled' : ''}`}>
+              <li
+                className={`page-item ${current === first ? 'disabled' : ''}`}
+              >
                 <button
                   type="button"
                   className="page-link"
@@ -199,7 +228,9 @@ const DataTable = () => {
                   <FontAwesomeIcon icon={faAngleDoubleLeft} />
                 </button>
               </li>
-              <li className={`page-item ${current === first ? 'disabled' : ''}`}>
+              <li
+                className={`page-item ${current === first ? 'disabled' : ''}`}
+              >
                 <button
                   type="button"
                   className="page-link"
