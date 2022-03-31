@@ -24,7 +24,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/react-fontawesome": "^0.1.17",
-    "@reduxjs/toolkit": "^1.6.2",
+    "@reduxjs/toolkit": "^1.8.1",
     "axios": "^0.26.1",
     "bootstrap": "^4.6.0",
     "core-js": "^3.19.1",
