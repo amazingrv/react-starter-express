@@ -1,5 +1,6 @@
 const path = require('path');
 const { merge } = require('webpack-merge');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
@@ -43,6 +44,10 @@ module.exports = merge(common, {
   },
   plugins: [
     new ESLintPlugin({ quiet: true }),
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+      favicon: './src/assets/favicon.ico',
+    }),
     new CopyPlugin({
       patterns: [
         {

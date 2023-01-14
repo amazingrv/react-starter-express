@@ -1,5 +1,4 @@
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanTerminalWebpackPlugin = require('clean-terminal-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
@@ -52,10 +51,6 @@ module.exports = {
   },
   plugins: [
     new CleanTerminalWebpackPlugin(),
-    new HtmlWebpackPlugin({
-      template: './src/index.html',
-      favicon: './src/assets/favicon.ico',
-    }),
     new LodashModuleReplacementPlugin(),
     new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/),
     new webpack.ProgressPlugin(),
