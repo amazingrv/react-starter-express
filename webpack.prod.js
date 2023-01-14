@@ -2,9 +2,9 @@ const path = require('path');
 const { merge } = require('webpack-merge');
 const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
-
 const common = require('./webpack.common');
 
 const DIST_DIR = path.join(__dirname, 'dist');
@@ -12,21 +12,25 @@ const SERVER_DIR = path.join(__dirname, 'server');
 
 module.exports = merge(common, {
   mode: 'production',
-  entry: ['./src/index.js'],
   output: {
-    filename: 'js/[name].[contenthash].js',
+    filename: '[name].[contenthash].js',
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/i,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+      },
+    ],
   },
   devtool: false,
   optimization: {
     runtimeChunk: 'single',
+    moduleIds: 'deterministic',
+    removeAvailableModules: false,
     splitChunks: {
-      cacheGroups: {
-        commons: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          chunks: 'all',
-        },
-      },
+      chunks: 'all',
     },
     minimizer: [
       new TerserPlugin({ exclude: /\/server/ }),
@@ -38,6 +42,7 @@ module.exports = merge(common, {
     ],
   },
   plugins: [
+    new ESLintPlugin({ quiet: true }),
     new CopyPlugin({
       patterns: [
         {
@@ -49,8 +54,6 @@ module.exports = merge(common, {
         },
       ],
     }),
-    new MiniCssExtractPlugin({
-      filename: 'css/[name].[contenthash].css',
-    }),
+    new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
   ],
 });

@@ -1,21 +1,17 @@
 import './styles.css';
 
 import 'core-js/stable';
-import 'regenerator-runtime/runtime';
-
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
-import store from './redux/store';
-import Routes from './Routes';
+import React, { Suspense } from 'react';
+import { createRoot } from 'react-dom/client';
+import App from './App';
 
 const mountNode = document.querySelector('#app');
+const root = createRoot(mountNode);
 
-ReactDOM.render(
-  <Provider store={store}>
-    <BrowserRouter>
-      <Routes />
-    </BrowserRouter>
-  </Provider>,
-  mountNode
+root.render(
+  <React.StrictMode>
+    <Suspense fallback={<div>Loading ...</div>}>
+      <App />
+    </Suspense>
+  </React.StrictMode>
 );

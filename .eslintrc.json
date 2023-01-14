@@ -1,7 +1,7 @@
 {
   "parser": "@babel/eslint-parser",
   "rules": {
-    "react/prop-types": "warn",
+    "react/prop-types": "off",
     "no-unused-vars": "warn"
   },
   "env": {
@@ -19,6 +19,7 @@
     "plugin:react/jsx-runtime",
     "plugin:react-hooks/recommended",
     "plugin:import/recommended",
+    "plugin:jsx-a11y/recommended",
     "plugin:prettier/recommended"
   ],
   "globals": {
@@ -26,13 +27,14 @@
     "SharedArrayBuffer": "readonly"
   },
   "settings": {
-    "react": {
-      "version": "detect"
-    },
     "import/resolver": {
       "node": {
-        "extensions": [".js", ".jsx", ".json"]
+        "extensions": [".js", ".jsx"]
       }
+    },
+    "react": {
+      "pragma": "React",
+      "version": "detect"
     }
   }
 }

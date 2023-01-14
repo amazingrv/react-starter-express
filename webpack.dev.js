@@ -1,28 +1,41 @@
-const webpack = require('webpack');
 const { merge } = require('webpack-merge');
+const ESLintPlugin = require('eslint-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const common = require('./webpack.common');
 
 module.exports = merge(common, {
   mode: 'development',
-  entry: {
-    main: [
-      'eventsource-polyfill',
-      'webpack-hot-middleware/client?reload=true',
-      './src/index.js',
+  output: {
+    filename: '[name].js',
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/i,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        options: {
+          plugins: ['react-refresh/babel'],
+        },
+      },
     ],
   },
-  output: {
-    filename: 'js/[name].js',
+  devtool: 'eval-cheap-source-map',
+  devServer: {
+    static: false,
+    port: 8080,
+    hot: true,
+    liveReload: false,
+    historyApiFallback: true,
   },
-  stats: 'minimal',
-  devtool: 'source-map',
+  stats: {
+    modules: false,
+    entrypoints: false,
+  },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
-    new MiniCssExtractPlugin({
-      filename: 'css/[name].css',
-    }),
+    new ReactRefreshWebpackPlugin(),
+    new ESLintPlugin({ fix: true, quiet: true }),
+    new MiniCssExtractPlugin({ filename: '[name].css' }),
   ],
 });
