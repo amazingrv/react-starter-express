@@ -1,6 +1,6 @@
-# react-starter-express [![Node CI](https://github.com/amazingrv/react-starter-express/actions/workflows/nodejs.yml/badge.svg)](https://github.com/amazingrv/react-starter-express/actions/workflows/nodejs.yml)
+# react-starter-express [![Node CI](https://github.com/amazingrv/react-starter-express/actions/workflows/nodejs.yml/badge.svg?branch=main)](https://github.com/amazingrv/react-starter-express/actions/workflows/nodejs.yml)
 
-A Simple react starter kit with exposed config and hooks support, runnnig from webpack-dev-server (for Node version 14.15 and above).
+A Simple react starter kit with exposed config and hooks support, runnnig from webpack-dev-server (for Node 16 LTS and above).
 
 Supports eslint with recommended lint rules, prettier and other best practices supported OOB
 
