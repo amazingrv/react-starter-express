@@ -23,6 +23,19 @@ module.exports = merge(common, {
         exclude: /node_modules/,
         loader: 'babel-loader',
       },
+      {
+        test: /\.css$/i,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+            },
+          },
+          'postcss-loader',
+        ],
+      },
     ],
   },
   devtool: false,
@@ -32,9 +45,16 @@ module.exports = merge(common, {
     removeAvailableModules: false,
     splitChunks: {
       chunks: 'all',
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        },
+      },
     },
     minimizer: [
-      new TerserPlugin({ exclude: /\/server/ }),
+      new TerserPlugin({ minify: TerserPlugin.swcMinify, exclude: /\/server/ }),
       new CssMinimizerPlugin({
         minimizerOptions: {
           preset: 'default',
@@ -43,7 +63,11 @@ module.exports = merge(common, {
     ],
   },
   plugins: [
-    new ESLintPlugin({ quiet: true }),
+    new ESLintPlugin({
+      extensions: ['js', 'jsx'],
+      quiet: false,
+      threads: true,
+    }),
     new HtmlWebpackPlugin({
       template: './src/index.html',
       favicon: './src/assets/favicon.ico',

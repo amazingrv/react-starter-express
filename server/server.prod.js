@@ -3,8 +3,8 @@ const http = require('http');
 const express = require('express');
 const compression = require('compression');
 const ejs = require('ejs');
-const properties = require('./properties');
 const helmet = require('helmet');
+const properties = require('./properties');
 
 const app = express();
 const server = http.createServer(app);

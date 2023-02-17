@@ -1,10 +1,10 @@
+const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
 const ejs = require('ejs');
-const fs = require('fs');
 const WebpackDevServer = require('webpack-dev-server');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const config = require('../webpack.dev.js');
+const config = require('../webpack.dev');
 const properties = require('./properties');
 
 const HTML_FILE = path.join(__dirname, '..', 'src', 'index.html');

@@ -1,6 +1,4 @@
 const webpack = require('webpack');
-const CleanTerminalWebpackPlugin = require('clean-terminal-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 module.exports = {
@@ -9,19 +7,6 @@ module.exports = {
   },
   module: {
     rules: [
-      {
-        test: /\.css$/i,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1,
-            },
-          },
-          'postcss-loader',
-        ],
-      },
       {
         test: /\.(svg)$/i,
         type: 'asset/inline',
@@ -44,13 +29,12 @@ module.exports = {
       'lodash-es': 'lodash',
     },
     extensions: ['.js', '.jsx'],
-    fallback: { crypto: false, fs: false },
+    fallback: { fs: false },
   },
   performance: {
     hints: false,
   },
   plugins: [
-    new CleanTerminalWebpackPlugin(),
     new LodashModuleReplacementPlugin(),
     new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/),
     new webpack.ProgressPlugin(),

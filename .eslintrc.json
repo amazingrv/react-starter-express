@@ -1,25 +1,96 @@
 {
   "parser": "@babel/eslint-parser",
   "rules": {
+    "array-callback-return": "error",
+    "eqeqeq": ["error", "smart"],
+    "lines-between-class-members": ["error", "always"],
+    "no-self-compare": "error",
+    "no-duplicate-imports": ["error", { "includeExports": true }],
+    "no-console": "off",
+    "no-bitwise": "error",
+    "no-shadow": "error",
+    "no-empty": "error",
+    "no-empty-pattern": "error",
+    "no-undef": "error",
+    "no-lonely-if": "error",
+    "no-unused-vars": "off",
+    "no-else-return": ["error", { "allowElseIf": false }],
+    "no-this-before-super": "error",
+    "no-return-assign": "error",
+    "no-var": "error",
+    "no-extend-native": "error",
+    "no-lone-blocks": "error",
+    "no-self-assign": "error",
+    "no-useless-return": "error",
+    "no-useless-escape": "error",
+    "no-useless-concat": "error",
+    "no-useless-catch": "error",
+    "no-prototype-builtins": "error",
+    "no-unneeded-ternary": "error",
+    "object-shorthand": [
+      "error",
+      "always",
+      { "ignoreConstructors": false, "avoidQuotes": true }
+    ],
+    "prefer-regex-literals": "error",
+    "prefer-const": ["error", { "destructuring": "all" }],
+    "prefer-rest-params": "error",
+    "prefer-object-spread": "error",
+    "prefer-spread": "error",
+    "prefer-template": "error",
+    "prefer-destructuring": [
+      "error",
+      { "array": false },
+      { "enforceForRenamedProperties": true }
+    ],
+    "rest-spread-spacing": ["error", "never"],
+    "spaced-comment": "error",
+    "template-curly-spacing": "error",
     "react/prop-types": "off",
-    "no-unused-vars": "warn"
+    "react/jsx-no-undef": "error",
+    "react/jsx-key": "error",
+    "react/jsx-boolean-value": ["error", "always"],
+    "react/jsx-no-useless-fragment": ["error", { "allowExpressions": true }],
+    "react/jsx-one-expression-per-line": "off",
+    "react/no-access-state-in-setstate": "error",
+    "react/no-array-index-key": "warn",
+    "react/no-unused-state": "warn",
+    "react/no-unused-class-component-methods": "warn",
+    "react/no-unstable-nested-components": ["error", { "allowAsProps": true }],
+    "import/order": "error",
+    "import/first": "error",
+    "import/no-self-import": "error",
+    "import/newline-after-import": "error",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      { "js": "never", "jsx": "never" }
+    ],
+    "import/no-useless-path-segments": [
+      "error",
+      { "noUselessIndex": true, "commonjs": true }
+    ],
+    "unused-imports/no-unused-imports": "error"
   },
   "env": {
-    "es2020": true,
+    "es2022": true,
     "browser": true,
     "node": true
   },
   "parserOptions": {
-    "requireConfigFile": false,
-    "sourceType": "module"
+    "ecmaVersion": 2022,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
   },
+  "plugins": ["unused-imports"],
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
     "plugin:react-hooks/recommended",
     "plugin:import/recommended",
-    "plugin:jsx-a11y/recommended",
     "plugin:prettier/recommended"
   ],
   "globals": {

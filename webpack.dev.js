@@ -1,7 +1,7 @@
 const { merge } = require('webpack-merge');
 const ESLintPlugin = require('eslint-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const FriendlyErrorsWebpackPlugin = require('@nuxt/friendly-errors-webpack-plugin');
 const common = require('./webpack.common');
 
 module.exports = merge(common, {
@@ -19,6 +19,19 @@ module.exports = merge(common, {
           plugins: ['react-refresh/babel'],
         },
       },
+      {
+        test: /\.css$/i,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+            },
+          },
+          'postcss-loader',
+        ],
+      },
     ],
   },
   devtool: 'eval-cheap-source-map',
@@ -29,13 +42,15 @@ module.exports = merge(common, {
     liveReload: false,
     historyApiFallback: true,
   },
-  stats: {
-    modules: false,
-    entrypoints: false,
-  },
+  stats: false,
   plugins: [
     new ReactRefreshWebpackPlugin(),
-    new ESLintPlugin({ fix: true, quiet: true }),
-    new MiniCssExtractPlugin({ filename: '[name].css' }),
+    new FriendlyErrorsWebpackPlugin(),
+    new ESLintPlugin({
+      extensions: ['js', 'jsx'],
+      fix: true,
+      quiet: true,
+      threads: true,
+    }),
   ],
 });
