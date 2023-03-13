@@ -26,7 +26,7 @@
     "@babel/preset-react": "^7.16.7",
     "@nuxt/friendly-errors-webpack-plugin": "^2.5.2",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
-    "@swc/core": "^1.3.39",
+    "@swc/core": "^1.3.40",
     "autoprefixer": "^10.4.14",
     "babel-loader": "^9.1.2",
     "babel-plugin-lodash": "^3.3.4",
