@@ -50,7 +50,7 @@ module.exports = merge(common, {
       extensions: ['js', 'jsx'],
       fix: true,
       quiet: true,
-      threads: true,
+      threads: false,
     }),
   ],
 });
