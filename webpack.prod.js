@@ -66,7 +66,7 @@ module.exports = merge(common, {
     new ESLintPlugin({
       extensions: ['js', 'jsx'],
       quiet: false,
-      threads: true,
+      threads: false,
     }),
     new HtmlWebpackPlugin({
       template: './src/index.html',
