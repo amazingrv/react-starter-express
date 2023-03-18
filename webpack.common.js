@@ -1,5 +1,4 @@
 const webpack = require('webpack');
-const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 module.exports = {
   output: {
@@ -35,8 +34,9 @@ module.exports = {
     hints: false,
   },
   plugins: [
-    new LodashModuleReplacementPlugin(),
     new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/),
-    new webpack.ProgressPlugin(),
+    new webpack.ProgressPlugin({
+      activeModules: true,
+    }),
   ],
 };

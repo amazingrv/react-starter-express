@@ -4,7 +4,7 @@
       "@babel/preset-env",
       {
         "useBuiltIns": "entry",
-        "corejs": "3.27",
+        "corejs": "3.29",
         "bugfixes": true
       }
     ],
@@ -15,5 +15,16 @@
       }
     ]
   ],
-  "plugins": ["react-html-attrs", "lodash"]
+  "plugins": [
+    "react-html-attrs",
+    [
+      "import",
+      {
+        "libraryName": "lodash",
+        "libraryDirectory": "",
+        "camel2DashComponentName": false
+      },
+      "lodash"
+    ]
+  ]
 }
