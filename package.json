@@ -46,7 +46,7 @@
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.7.5",
     "postcss": "^8.4.6",
-    "postcss-loader": "^7.0.2",
+    "postcss-loader": "^7.2.4",
     "prettier": "^2.8.7",
     "react-refresh": "^0.14.0",
     "rimraf": "^4.4.1",
