@@ -19,9 +19,13 @@ module.exports = merge(common, {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/i,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
+        test: /\.jsx?$/,
+        exclude: /(node_modules)/,
+        use: [
+          {
+            loader: 'swc-loader',
+          },
+        ],
       },
       {
         test: /\.css$/i,
@@ -56,18 +60,13 @@ module.exports = merge(common, {
     minimizer: [
       new TerserPlugin({ minify: TerserPlugin.swcMinify, exclude: /\/server/ }),
       new CssMinimizerPlugin({
-        minimizerOptions: {
-          preset: 'default',
-        },
+        minify: CssMinimizerPlugin.cssoMinify,
+        parallel: false,
       }),
     ],
   },
   plugins: [
-    new ESLintPlugin({
-      extensions: ['js', 'jsx'],
-      quiet: false,
-      threads: false,
-    }),
+    new ESLintPlugin({ extensions: ['js', 'jsx'], quiet: false }),
     new HtmlWebpackPlugin({
       template: './src/index.html',
       favicon: './src/assets/favicon.ico',

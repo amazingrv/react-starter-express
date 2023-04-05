@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import './App.css';
+import reactLogo from '../assets/react.svg';
+import './styles.css';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -8,8 +8,8 @@ function App() {
   return (
     <div className="App">
       <div>
-        <a href="https://react.dev/" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
+        <a href="https://react.dev/" rel="noreferrer" target="_blank">
+          <img alt="React logo" className="logo react" src={reactLogo} />
         </a>
       </div>
       <h1>ReactJS</h1>

@@ -1,5 +1,4 @@
 {
-  "parser": "@babel/eslint-parser",
   "rules": {
     "array-callback-return": "error",
     "eqeqeq": ["error", "smart"],
@@ -50,13 +49,17 @@
     "react/jsx-no-undef": "error",
     "react/jsx-key": "error",
     "react/jsx-boolean-value": ["error", "always"],
+    "react/jsx-filename-extension": "error",
     "react/jsx-no-useless-fragment": ["error", { "allowExpressions": true }],
     "react/jsx-one-expression-per-line": "off",
+    "react/jsx-pascal-case": "error",
+    "react/jsx-sort-props": "error",
     "react/no-access-state-in-setstate": "error",
     "react/no-array-index-key": "warn",
     "react/no-unused-state": "warn",
     "react/no-unused-class-component-methods": "warn",
     "react/no-unstable-nested-components": ["error", { "allowAsProps": true }],
+    "react/no-typos": "error",
     "import/order": "error",
     "import/first": "error",
     "import/no-self-import": "error",
@@ -74,8 +77,7 @@
   },
   "env": {
     "es2022": true,
-    "browser": true,
-    "node": true
+    "browser": true
   },
   "parserOptions": {
     "ecmaVersion": 2022,
