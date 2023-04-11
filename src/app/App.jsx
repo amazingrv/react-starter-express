@@ -14,7 +14,7 @@ function App() {
       </div>
       <h1>ReactJS</h1>
       <div className="card">
-        <button onClick={() => setCount(c => c + 1)}>count is {count}</button>
+        <button onClick={() => setCount((c) => c + 1)}>count is {count}</button>
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
