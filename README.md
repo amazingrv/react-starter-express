@@ -1,18 +1,22 @@
 # react-starter-express [![Node CI](https://github.com/amazingrv/react-starter-express/actions/workflows/nodejs.yml/badge.svg?branch=main)](https://github.com/amazingrv/react-starter-express/actions/workflows/nodejs.yml)
 
-A Simple react starter kit with exposed config and hooks support, runnnig from webpack-dev-server (for Node 16 LTS and above).
+A simple react starter kit with exposed config and hooks support, running from webpack-dev-server as a custom server (for Node 16 LTS and above).
 
 Supports eslint with recommended lint rules, prettier and other best practices supported OOB
 
 Currently supported config:
 
-- exposed configuration for eslint, babel, postcss and webpack
-- browserlist support with autoprefixer using postcss
-- babel-preset-env, Core-JS 3 Polyfills and other most used babel plugins
-- webpack asset modules for svg, font and images etc.
-- support for css 3, optimized for development and prod builds
-- webpack tree-shaking with lodash and moment lib optimizations
-- prod build with minimum size using terser, css optimizer and html minify
+- [x] configuration for eslint, prettier and webpack
+- [x] browserlist support with autoprefixer using postcss
+- [x] @swc/core for transpiling javascript
+- [x] support for Core-JS 3 polyfills
+- [x] webpack asset modules for svg, font and images etc.
+- [x] support for css modules
+- [x] optimized for development with fast startup and HMR
+- [x] efficient and small production builds
+- [x] webpack tree-shaking with lodash and moment lib optimizations
+- [x] code minification using swc-minify, csso for css and html minify
+- [x] ejs for generate custom html render during server start 
 
 ## Building and running on localhost
 
@@ -22,7 +26,7 @@ First install dependencies:
 npm install
 ```
 
-To run in hot reloading mode using express configured with webpack-dev-middlware and webpack-hot-middleware:
+To run in hot reloading mode using express configured with dev server:
 
 ```sh
 npm start
