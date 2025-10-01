@@ -1,32 +1,36 @@
-const path = require('path');
-const http = require('http');
-const express = require('express');
-const compression = require('compression');
-const ejs = require('ejs');
-const helmet = require('helmet');
-const properties = require('./properties');
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import http from 'node:http';
+import express from 'express';
+import compression from 'compression';
+import handlebars from 'handlebars';
+import helmet from 'helmet';
+import properties from './properties.mjs';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const server = http.createServer(app);
 const DIST_DIR = __dirname;
 const HTML_FILE = path.join(DIST_DIR, 'index.html');
-const port = process.env.PORT || '9060';
+const port = process.env.PORT || '8080';
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(helmet());
 app.use(compression());
-app.use(express.static(path.join(DIST_DIR, 'static')));
+app.use(express.static(path.join(DIST_DIR, 'public')));
 
 app.get('*', (req, res, next) => {
-  ejs.renderFile(HTML_FILE, properties, (err, htmlString) => {
-    if (err) {
-      return next(err);
-    }
-    res.set('content-type', 'text/html');
-    res.send(htmlString);
-    res.end();
-  });
+  const buffer = fs.readFileSync(HTML_FILE);
+  const template = handlebars.compile(buffer.toString('utf8'));
+  console.log(template, properties);
+  const htmlString = template(properties);
+  res.set('content-type', 'text/html');
+  res.send(htmlString);
+  res.end();
 });
 
 server.listen(port, () => {

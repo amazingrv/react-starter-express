@@ -1,10 +1,14 @@
-const { merge } = require('webpack-merge');
-const ESLintPlugin = require('eslint-webpack-plugin');
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
-const FriendlyErrorsWebpackPlugin = require('@nuxt/friendly-errors-webpack-plugin');
-const common = require('./webpack.common');
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { merge } from 'webpack-merge';
+import ESLintPlugin from 'eslint-webpack-plugin';
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+import common from './webpack.common.js';
 
-module.exports = merge(common, {
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+export default merge(common, {
   mode: 'development',
   output: {
     filename: '[name].js',
@@ -18,14 +22,7 @@ module.exports = merge(common, {
           {
             loader: 'swc-loader',
             options: {
-              jsc: {
-                transform: {
-                  react: {
-                    development: true,
-                    refresh: true,
-                  },
-                },
-              },
+              configFile: path.join(__dirname, '.swcrc.dev.json'),
             },
           },
         ],
@@ -45,18 +42,18 @@ module.exports = merge(common, {
       },
     ],
   },
-  devtool: 'eval-cheap-module-source-map',
+  devtool: 'cheap-module-source-map',
   devServer: {
     static: false,
-    port: 9060,
+    open: true,
+    port: 8080,
     hot: true,
     liveReload: false,
     historyApiFallback: true,
   },
-  stats: false,
+  stats: 'minimal',
   plugins: [
     new ReactRefreshWebpackPlugin(),
-    new FriendlyErrorsWebpackPlugin(),
     new ESLintPlugin({
       extensions: ['js', 'jsx'],
       fix: true,
