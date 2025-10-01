@@ -4,28 +4,29 @@
   "description": "react starter with exposed config",
   "author": "amazingrv",
   "license": "MIT",
-  "private": true,
+  "type": "module",
   "scripts": {
     "clean": "rimraf dist",
     "start": "npm run server",
-    "server": "node ./server/server.dev.js",
+    "server": "node server.dev.js",
     "build": "npm run clean && npm run compile:app:prod && npm run prod:deps",
     "prod:deps": "cd ./dist && npm install --omit=dev && cd ..",
     "compile:app:prod": "webpack --config webpack.prod.js"
   },
   "engines": {
-    "node": ">20"
+    "node": ">=20"
   },
   "dependencies": {
     "core-js": "^3.45.1",
-    "ejs": "^3.1.10",
+    "handlebars": "^4.7.8",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@nuxt/friendly-errors-webpack-plugin": "^2.6.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.6.1",
     "@swc/core": "^1.13.5",
+    "@types/react": "^18.3.25",
+    "@types/react-dom": "^18.3.7",
     "autoprefixer": "^10.4.21",
     "copy-webpack-plugin": "^13.0.1",
     "css-loader": "^7.1.2",

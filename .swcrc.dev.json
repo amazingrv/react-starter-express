@@ -6,10 +6,11 @@
     },
     "transform": {
       "react": {
-        "runtime": "automatic"
+        "runtime": "automatic",
+        "development": true,
+        "refresh": true
       }
     },
-    "target": "es2022",
     "loose": false,
     "minify": {
       "compress": false,
@@ -20,10 +21,11 @@
     "type": "es6"
   },
   "minify": false,
+  "sourceMaps": true,
   "isModule": true,
   "env": {
-    "mode": "entry",
-    "coreJs": "3.29.1",
+    "mode": "usage",
+    "coreJs": "3.45.1",
     "bugfixes": true
   }
 }
