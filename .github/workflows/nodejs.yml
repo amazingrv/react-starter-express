@@ -1,4 +1,7 @@
 name: Node CI
+permissions:
+  contents: read
+  pull-requests: write
 
 on:
   push:
@@ -21,7 +24,7 @@ jobs:
       - name: Use Node.js ${{ matrix.node_version }}
         uses: actions/setup-node@v5
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: ${{ matrix.node_version }}
           check-latest: false
           cache: 'npm'
       - name: Install dependencies
