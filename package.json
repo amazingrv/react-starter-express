@@ -19,13 +19,13 @@
   "dependencies": {
     "core-js": "^3.45.1",
     "handlebars": "^4.7.8",
-    "react": "^18.3.1",
+    "react": "^19.1.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@pmmmwh/react-refresh-webpack-plugin": "^0.6.1",
     "@swc/core": "^1.13.5",
-    "@types/react": "^18.3.25",
+    "@types/react": "^19.1.17",
     "@types/react-dom": "^18.3.7",
     "autoprefixer": "^10.4.21",
     "copy-webpack-plugin": "^13.0.1",
