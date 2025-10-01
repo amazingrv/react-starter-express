@@ -3,6 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import http from 'node:http';
 import express from 'express';
+import { rateLimit } from 'express-rate-limit';
 import compression from 'compression';
 import handlebars from 'handlebars';
 import helmet from 'helmet';
@@ -22,6 +23,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(helmet());
 app.use(compression());
 app.use(express.static(path.join(DIST_DIR, 'public')));
+
+const limiter = rateLimit({
+  windowMs: 5 * 60 * 1000,
+  limit: 100,
+});
+
+// Apply the rate limiting middleware to all requests.
+app.use(limiter);
 
 app.get('*', (req, res, next) => {
   const buffer = fs.readFileSync(HTML_FILE);
