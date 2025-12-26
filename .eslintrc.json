@@ -46,6 +46,7 @@
     "spaced-comment": "error",
     "template-curly-spacing": "error",
     "react/prop-types": "off",
+    "react/react-in-jsx-scope": "off",
     "react/jsx-no-undef": "error",
     "react/jsx-key": "error",
     "react/jsx-boolean-value": ["error", "always"],
