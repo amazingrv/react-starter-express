@@ -1,8 +1,15 @@
-const webpack = require('webpack');
+import webpack from 'webpack';
 
-module.exports = {
+export default {
   output: {
     publicPath: '/',
+    module: true,
+    library: {
+      type: 'module', // Crucial for ES module output
+    },
+  },
+  experiments: {
+    outputModule: true, // Enables the generation of ES module output
   },
   module: {
     rules: [
@@ -16,10 +23,6 @@ module.exports = {
         generator: {
           filename: 'images/[hash][ext][query]',
         },
-      },
-      {
-        test: /\.html$/,
-        loader: 'html-loader',
       },
     ],
   },
