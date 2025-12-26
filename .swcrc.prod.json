@@ -1,0 +1,31 @@
+{
+  "jsc": {
+    "parser": {
+      "syntax": "ecmascript",
+      "jsx": true
+    },
+    "transform": {
+      "react": {
+        "runtime": "automatic",
+        "development": false,
+        "refresh": false
+      }
+    },
+    "loose": false,
+    "minify": {
+      "compress": true,
+      "mangle": true
+    }
+  },
+  "module": {
+    "type": "es6"
+  },
+  "minify": true,
+  "sourceMaps": false,
+  "isModule": true,
+  "env": {
+    "mode": "usage",
+    "coreJs": "3.45.1",
+    "bugfixes": true
+  }
+}

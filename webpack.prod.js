@@ -1,20 +1,26 @@
-const path = require('path');
-const { merge } = require('webpack-merge');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const ESLintPlugin = require('eslint-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
-const common = require('./webpack.common');
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { merge } from 'webpack-merge';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import TerserPlugin from 'terser-webpack-plugin';
+import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
+import ESLintPlugin from 'eslint-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import CopyPlugin from 'copy-webpack-plugin';
+
+import common from './webpack.common.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const DIST_DIR = path.join(__dirname, 'dist');
 const SERVER_DIR = path.join(__dirname, 'server');
 
-module.exports = merge(common, {
+export default merge(common, {
   mode: 'production',
   output: {
-    filename: '[name].[contenthash].js',
+    path: path.join(__dirname, 'dist', 'public'),
+    filename: 'js/[name].[contenthash].js',
   },
   module: {
     rules: [
@@ -24,6 +30,9 @@ module.exports = merge(common, {
         use: [
           {
             loader: 'swc-loader',
+            options: {
+              configFile: path.join(__dirname, '.swcrc.prod.json'),
+            },
           },
         ],
       },
@@ -48,17 +57,26 @@ module.exports = merge(common, {
     moduleIds: 'deterministic',
     removeAvailableModules: false,
     splitChunks: {
-      chunks: 'all',
+      chunks: 'all', // Optimize all chunks, including initial and async ones
+      minSize: 20000, // Minimum size of a chunk in bytes to be generated (20KB)
+      minChunks: 1, // Minimum number of chunks that a module must be shared between
       cacheGroups: {
-        commons: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          chunks: 'all',
+        vendors: {
+          test: /[\\/]node_modules[\\/]/, // Target modules within node_modules
+          name: 'vendors', // Name of the vendor chunk
+          priority: -10, // Higher priority means it's processed earlier
+          reuseExistingChunk: true, // Reuse existing chunks if possible
+        },
+        common: {
+          minChunks: 2, // Modules shared by at least 2 chunks
+          priority: -20, // Lower priority than vendors
+          reuseExistingChunk: true,
+          name: 'common', // Name of the common chunk
         },
       },
     },
     minimizer: [
-      new TerserPlugin({ minify: TerserPlugin.swcMinify, exclude: /\/server/ }),
+      new TerserPlugin({ minify: TerserPlugin.swcMinify, exclude: /server/ }),
       new CssMinimizerPlugin({
         minify: CssMinimizerPlugin.cssoMinify,
         parallel: false,
@@ -70,6 +88,9 @@ module.exports = merge(common, {
     new HtmlWebpackPlugin({
       template: './src/index.html',
       favicon: './src/assets/favicon.ico',
+      scriptLoading: 'module',
+      minify: false,
+      filename: path.join(__dirname, 'dist', 'index.html'),
     }),
     new CopyPlugin({
       patterns: [
@@ -77,11 +98,13 @@ module.exports = merge(common, {
           from: SERVER_DIR,
           to: DIST_DIR,
           globOptions: {
-            ignore: ['**/server.dev.js', '**/node_modules/**'],
+            ignore: ['**/node_modules/**'],
           },
         },
       ],
     }),
-    new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].[contenthash].css',
+    }),
   ],
 });
